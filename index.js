@@ -77,10 +77,48 @@ function toWeirdCase(string) {
 }
 //##############################
 //##############################
+//Challenge:
+
+function findOutlier(integers) {
+  return integers.slice(0, 3).filter(even).length >= 2
+    ? integers.find(odd)
+    : integers.find(even);
+
+  function even(num) {
+    return num % 2 === 0;
+  }
+
+  function odd(num) {
+    return !even(num);
+  }
+}
 //##############################
 //##############################
+//Challenge :Your goal in this kata is to implement a difference function, which subtracts one list from another and returns the result.
+// It should remove all values from list a, which are present in list b.
+// arrayDiff([1,2],[1]) == [2]
+
+//This solution filters out the elements from array a that do not exist in array b!!
+function arrayDiff(a, b) {
+  return a.filter((e) => !b.includes(e));
+}
 //##############################
 //##############################
+//Given a string of words, you need to find the highest scoring word. Each letter of a word scores points according to its position in the alphabet: a = 1, b = 2, c = 3 etc. You need to return the highest scoring word as a string. If two words score the same, return the word that appears earliest in the original string.
+
+function high(x) {
+  return x.split(" ").reduce((accum, current) => {
+    console.log(accum, current);
+    return score(current) > score(accum) ? current : accum;
+  });
+}
+
+function score(word) {
+  return word.split("").reduce((accum, current) => {
+    return accum + (current.charCodeAt() - 96);
+  }, 0);
+}
+
 //##############################
 //##############################
 //##############################
